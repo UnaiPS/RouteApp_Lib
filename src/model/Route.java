@@ -8,64 +8,41 @@ package model;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
  * @author Unai Pérez Sánchez
  */
-@NamedQueries({
-    @NamedQuery(
-            name = "findAllRoutes",
-            query = "SELECT r FROM Route r ORDER BY r.id"),
-    @NamedQuery(
-            name = "findByAssignedUser",
-            query = "SELECT r FROM Route r WHERE r.assignedTo=:assignedTo")
-})
-@Entity
-@Table(name = "route",schema = "routesdb")
+
 @XmlRootElement
 public class Route implements Serializable{
     private static final long serialVersionUID = 1L;
     /**
      * To identificate the route, the route will have an id of type Long
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    
     private Long id;
     /**
      * The coordinates of the route with the attributes of all the points of the 
      * route
      */
-    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
+   
     private Set<Coordinate_Route> coordinates;
     /**
      * The name of the route that the administrator assigned
      */
-    @NotNull
+    
     private String name;
     /**
      * The information about the administrator that created the route
      */
-    @ManyToOne
-    @NotNull
+    
     private User createdBy;
     /**
      * The delivery man/technician assigned to the route
      */
-    @ManyToOne
+    
     private User assignedTo;
     /**
      * The distance that the driver will be doing
@@ -78,27 +55,27 @@ public class Route implements Serializable{
     /**
      * If the route has been started or not
      */
-    @NotNull
+    
     private Boolean started;
     /**
      * If the Route has been ended or not
      */
-    @NotNull
+    
     private Boolean ended;
     /**
      * The mode of the route (FASTEST,SHORTEST,BALANCED)
      */
-    @NotNull
+    
     private Mode mode;
     /**
      * The type of the vehicle that the driver is going to use
      */
-    @NotNull
+    
     private TransportMode transportMode;
     /**
      * When is creating the route if takes into account the traffic at the moment
      */
-    @NotNull
+    
     private TrafficMode trafficMode;
 
     /**
