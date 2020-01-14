@@ -8,6 +8,13 @@ package model;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleSetProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -22,74 +29,100 @@ public class Route implements Serializable{
      * To identificate the route, the route will have an id of type Long
      */
     
-    private Long id;
+    private SimpleLongProperty id;
     /**
      * The coordinates of the route with the attributes of all the points of the 
      * route
      */
    
-    private Set<Coordinate_Route> coordinates;
+    private SimpleSetProperty<Coordinate_Route> coordinates;
     /**
      * The name of the route that the administrator assigned
      */
     
-    private String name;
+    private SimpleStringProperty name;
     /**
      * The information about the administrator that created the route
      */
     
-    private User createdBy;
+    private SimpleObjectProperty<User> createdBy;
     /**
      * The delivery man/technician assigned to the route
      */
     
-    private User assignedTo;
+    private SimpleObjectProperty<User> assignedTo;
     /**
      * The distance that the driver will be doing
      */
-    private Double totalDistance;
+    private SimpleDoubleProperty totalDistance;
     /**
      * How many time the system expected to make the route
      */
-    private Integer estimatedTime;
+    private SimpleIntegerProperty estimatedTime;
     /**
      * If the route has been started or not
      */
     
-    private Boolean started;
+    private SimpleBooleanProperty started;
     /**
      * If the Route has been ended or not
      */
     
-    private Boolean ended;
+    private SimpleBooleanProperty ended;
     /**
      * The mode of the route (FASTEST,SHORTEST,BALANCED)
      */
     
-    private Mode mode;
+    private SimpleObjectProperty<Mode> mode;
     /**
      * The type of the vehicle that the driver is going to use
      */
     
-    private TransportMode transportMode;
+    private SimpleObjectProperty<TransportMode> transportMode;
     /**
      * When is creating the route if takes into account the traffic at the moment
      */
     
-    private TrafficMode trafficMode;
+    private SimpleObjectProperty<TrafficMode> trafficMode;
 
+    public Route(Long id, 
+            Set<Coordinate_Route> coordinates, 
+            String name, User createdBy, 
+            User assignedTo, Double totalDistance, 
+            Integer estimatedTime, 
+            Boolean started, 
+            Boolean ended, 
+            Mode mode, 
+            TransportMode transportMode, 
+            TrafficMode trafficMode) {
+        this.id = new SimpleLongProperty(id);
+        this.coordinates = new SimpleSetProperty<Coordinate_Route>();
+        this.name = new SimpleStringProperty(name);
+        this.createdBy = new SimpleObjectProperty<>(createdBy);
+        this.assignedTo = new SimpleObjectProperty<>(assignedTo);
+        this.totalDistance = new SimpleDoubleProperty(totalDistance);
+        this.estimatedTime = new SimpleIntegerProperty(estimatedTime);
+        this.started = new SimpleBooleanProperty(started);
+        this.ended = new SimpleBooleanProperty(ended);
+        this.mode = new SimpleObjectProperty<>(mode);
+        this.transportMode = new SimpleObjectProperty<>(transportMode);
+        this.trafficMode = new SimpleObjectProperty<>(trafficMode);
+    }
+    
+    
+    
     /**
      * @return the id
      */
     public Long getId() {
-        return id;
+        return this.id.get();
     }
 
     /**
      * @param id the id to set
      */
     public void setId(Long id) {
-        this.id = id;
+        this.id.set(id);
     }
 
     /**
@@ -97,153 +130,153 @@ public class Route implements Serializable{
      */
     
     public Set<Coordinate_Route> getCoordinates() {
-        return coordinates;
+        return this.coordinates.get();
     }
 
     /**
      * @param coordinates the coordinates to set
      */
     public void setCoordinates(Set<Coordinate_Route> coordinates) {
-        this.coordinates = coordinates;
+        this.coordinates.addAll(coordinates);
     }
     /**
      * @return the createdBy
      */
     public User getCreatedBy() {
-        return createdBy;
+        return this.createdBy.get();
     }
 
     /**
      * @param createdBy the createdBy to set
      */
     public void setCreatedBy(User createdBy) {
-        this.createdBy = createdBy;
+        this.createdBy.set(createdBy);
     }
 
     /**
      * @return the assignedTo
      */
     public User getAssignedTo() {
-        return assignedTo;
+        return this.assignedTo.get();
     }
 
     /**
      * @param assignedTo the assignedTo to set
      */
     public void setAssignedTo(User assignedTo) {
-        this.assignedTo = assignedTo;
+        this.assignedTo.set(assignedTo);
     }
 
     /**
      * @return the name
      */
     public String getName() {
-        return name;
+        return this.name.get();
     }
 
     /**
      * @param name the name to set
      */
     public void setName(String name) {
-        this.name = name;
+        this.name.set(name);
     }
 
     /**
      * @return the totalDistance
      */
     public Double getTotalDistance() {
-        return totalDistance;
+        return this.totalDistance.get();
     }
 
     /**
      * @param totalDistance the totalDistance to set
      */
     public void setTotalDistance(Double totalDistance) {
-        this.totalDistance = totalDistance;
+        this.totalDistance.set(totalDistance);
     }
 
     /**
      * @return the estimatedTime
      */
     public Integer getEstimatedTime() {
-        return estimatedTime;
+        return this.estimatedTime.get();
     }
 
     /**
      * @param estimatedTime the estimatedTime to set
      */
     public void setEstimatedTime(Integer estimatedTime) {
-        this.estimatedTime = estimatedTime;
+        this.estimatedTime.set(estimatedTime);
     }
 
     /**
      * @return the started
      */
     public Boolean getStarted() {
-        return started;
+        return this.started.get();
     }
 
     /**
      * @param started the started to set
      */
     public void setStarted(Boolean started) {
-        this.started = started;
+        this.started.set(started);
     }
 
     /**
      * @return the ended
      */
     public Boolean getEnded() {
-        return ended;
+        return this.ended.get();
     }
 
     /**
      * @param ended the ended to set
      */
     public void setEnded(Boolean ended) {
-        this.ended = ended;
+        this.ended.set(ended);
     }
 
     /**
      * @return the mode
      */
     public Mode getMode() {
-        return mode;
+        return this.mode.get();
     }
 
     /**
      * @param mode the mode to set
      */
     public void setMode(Mode mode) {
-        this.mode = mode;
+        this.mode.set(mode);
     }
 
     /**
      * @return the transportMode
      */
     public TransportMode getTransportMode() {
-        return transportMode;
+        return this.transportMode.get();
     }
 
     /**
      * @param transportMode the transportMode to set
      */
     public void setTransportMode(TransportMode transportMode) {
-        this.transportMode = transportMode;
+        this.transportMode.set(transportMode);
     }
 
     /**
      * @return the trafficMode
      */
     public TrafficMode getTrafficMode() {
-        return trafficMode;
+        return this.trafficMode.get();
     }
 
     /**
      * @param trafficMode the trafficMode to set
      */
     public void setTrafficMode(TrafficMode trafficMode) {
-        this.trafficMode = trafficMode;
+        this.trafficMode.set(trafficMode);
     }
 
     @Override

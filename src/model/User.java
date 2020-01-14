@@ -1,19 +1,8 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -21,33 +10,20 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Daira Eguzkiza Lamelas
  */
 
-@Entity
-@Table(name="user", schema="routesdb")
-@NamedQueries({
-@NamedQuery(
-        name="findAllDeliveryAccounts", 
-        query = "SELECT u FROM User u WHERE u.privilege=routeappjpa.Privilege.USER"),
-@NamedQuery(name="findAll", query="select u from User u ORDER BY u.id"),
-@NamedQuery(name="findAccountByLogin", query="select u from User u where u.login=:login"),
-@NamedQuery(name="prueba", query="select u from User u where u.id=:id and u.fullName=:fullName")
-})
+
 @XmlRootElement
 public class User implements Serializable{
         private static final long serialVersionUID=1L;
 
-        @Id
-        @GeneratedValue(strategy=GenerationType.AUTO)
+        
         private Long id;
-        @Column(unique=true)
         private String login;
         private String fullName;
         private String email;
         private Status status;
         private Privilege privilege;
         private String password;
-        @Temporal(TemporalType.TIMESTAMP)
         private Date lastAccess;
-        @Temporal(TemporalType.TIMESTAMP)
         private Date lastPasswordChange;
 
     public Long getId() {
@@ -185,10 +161,13 @@ public class User implements Serializable{
 
     @Override
     public String toString() {
+        /*
         return "User{" + "id=" + id + ", login=" + login + ", fullName=" + 
                 fullName + ", email=" + email + ", status=" + status + 
                 ", privilege=" + privilege + ", password=" + password + 
                 ", lastAccess=" + lastAccess + ", lastPasswordChange=" 
                 + lastPasswordChange + '}';
+        */
+        return fullName;
     }
 }

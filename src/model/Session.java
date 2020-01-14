@@ -8,25 +8,19 @@ package model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Jon Calvo Gaminde
  */
-@Entity
-@Table(name="session", schema="routesdb")
+
 @XmlRootElement
 public class Session implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @OneToOne
+    
     private User logged;
-    @NotNull
     private String code;
-    @NotNull
     private Timestamp lastAction;
 
     

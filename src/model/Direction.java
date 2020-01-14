@@ -7,29 +7,19 @@ package model;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.Set;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Jon Calvo Gaminde
  */
-@Entity
-@Table(name="direction", schema="routesdb")
-@NamedQueries({
-    @NamedQuery(name="findDirectionsByType",
-            query="SELECT d FROM Direction d WHERE d.coordinate.type = :type"
-    )
-})
+
 @XmlRootElement
 public class Direction implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @OneToOne
+    
     private Coordinate coordinate;
-    @NotNull
+    
     private String name;
     private String country;
     private String state;

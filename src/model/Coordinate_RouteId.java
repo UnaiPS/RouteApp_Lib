@@ -7,14 +7,11 @@ package model;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.Set;
-import javax.persistence.*;
 
 /**
  *
  * @author 2dam
  */
-@Embeddable
 public class Coordinate_RouteId implements Serializable {
     private Long routeId;
     private Long coordinateId;

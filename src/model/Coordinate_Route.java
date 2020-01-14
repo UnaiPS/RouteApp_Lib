@@ -7,8 +7,6 @@ package model;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -16,27 +14,23 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author 2dam
  */
-@Entity
-@Table(name="coordinate_route", schema="routesdb")
+
 @XmlRootElement
 public class Coordinate_Route implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
+    
     private Coordinate_RouteId id;
-    @MapsId("routeId")
-    @ManyToOne
+    
     private Route route;
-    @MapsId("coordinateId")
-    @ManyToOne
+    
     private Coordinate coordinate;
-    @NotNull
+    
     private Integer wayOrder;
     private Long visited;
 
     /**
      * @return the route
      */
-    @XmlTransient
     public Route getRoute() {
         return route;
     }
