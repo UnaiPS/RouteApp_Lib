@@ -6,7 +6,7 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -21,7 +21,7 @@ public class Session implements Serializable {
     
     private User logged;
     private String code;
-    private Timestamp lastAction;
+    private Date lastAction;
 
     
 
@@ -58,14 +58,14 @@ public class Session implements Serializable {
     /**
      * @return the lastAction
      */
-    public Timestamp getLastAction() {
+    public Date getLastAction() {
         return lastAction;
     }
 
     /**
      * @param lastAction the lastAction to set
      */
-    public void setLastAction(Timestamp lastAction) {
+    public void setLastAction(Date lastAction) {
         this.lastAction = lastAction;
     }
 
