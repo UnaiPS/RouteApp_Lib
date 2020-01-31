@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.io.Serializable;
@@ -10,75 +5,53 @@ import java.util.Objects;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * The coordinate bean.
  *
  * @author Jon Calvo Gaminde
  */
-
 @XmlRootElement
 public class Coordinate implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    
+
     private Long id;
-    
+
     private Double latitude;
-    
+
     private Double longitude;
-    
+
     private Type type;
 
-
-    /**
-     * @return the id
-     */
+    //Getters
     public Long getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-     * @return the latitude
-     */
     public Double getLatitude() {
         return latitude;
     }
 
-    /**
-     * @param latitude the latitude to set
-     */
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    /**
-     * @return the longitude
-     */
     public Double getLongitude() {
         return longitude;
     }
 
-    /**
-     * @param longitude the longitude to set
-     */
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
-
-    /**
-     * @return the type
-     */
     public Type getType() {
         return type;
     }
 
-    /**
-     * @param type the type to set
-     */
+    //Setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
     public void setType(Type type) {
         this.type = type;
     }
@@ -92,8 +65,6 @@ public class Coordinate implements Serializable {
         hash = 37 * hash + Objects.hashCode(this.type);
         return hash;
     }
-
-    
 
     @Override
     public boolean equals(Object obj) {

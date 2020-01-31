@@ -1,45 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
+ * The bean of the ManyToMany id for the coordinate route.
  *
- * @author 2dam
+ * @author Jon Calvo Gaminde
  */
 public class Coordinate_RouteId implements Serializable {
+
     private Long routeId;
     private Long coordinateId;
 
-    /**
-     * @return the routeId
-     */
+    //Getters
     public Long getRouteId() {
         return routeId;
     }
 
-    /**
-     * @param routeId the routeId to set
-     */
-    public void setRouteId(Long routeId) {
-        this.routeId = routeId;
-    }
-
-    /**
-     * @return the coordinateId
-     */
     public Long getCoordinateId() {
         return coordinateId;
     }
 
-    /**
-     * @param coordinateId the coordinateId to set
-     */
+    //Setters
+    public void setRouteId(Long routeId) {
+        this.routeId = routeId;
+    }
+
     public void setCoordinateId(Long coordinateId) {
         this.coordinateId = coordinateId;
     }
@@ -51,8 +38,6 @@ public class Coordinate_RouteId implements Serializable {
         hash = 29 * hash + Objects.hashCode(this.coordinateId);
         return hash;
     }
-
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -80,5 +65,4 @@ public class Coordinate_RouteId implements Serializable {
         return "Coordinate_RouteId{" + "routeId=" + routeId + ", coordinateId=" + coordinateId + '}';
     }
 
-    
 }

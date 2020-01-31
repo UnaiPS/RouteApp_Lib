@@ -7,69 +7,50 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * This entity defines a user of the application with its respective data.
+ *
  * @author Daira Eguzkiza Lamelas
  */
-
-
 @XmlRootElement
-public class User implements Serializable{
-        private static final long serialVersionUID=1L;
+public class User implements Serializable {
 
-        
-        private Long id;
-        private String login;
-        private String fullName;
-        private String email;
-        private Status status;
-        private Privilege privilege;
-        private String password;
-        private Date lastAccess;
-        private Date lastPasswordChange;
+    private static final long serialVersionUID = 1L;
 
+    private Long id;
+    private String login;
+    private String fullName;
+    private String email;
+    private Status status;
+    private Privilege privilege;
+    private String password;
+    private Date lastAccess;
+    private Date lastPasswordChange;
+
+    //Getters
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getLogin() {
         return login;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public String getFullName() {
         return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Status getStatus() {
         return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
     }
 
     public Privilege getPrivilege() {
         return privilege;
     }
 
+    //Setters
     public void setPrivilege(Privilege privilege) {
         this.privilege = privilege;
     }
@@ -78,27 +59,45 @@ public class User implements Serializable{
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Date getLastAccess() {
         return lastAccess;
-    }
-
-    public void setLastAccess(Date lastAccess) {
-        this.lastAccess = lastAccess;
     }
 
     public Date getLastPasswordChange() {
         return lastPasswordChange;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setLastAccess(Date lastAccess) {
+        this.lastAccess = lastAccess;
+    }
+
     public void setLastPasswordChange(Date lastPasswordChange) {
         this.lastPasswordChange = lastPasswordChange;
     }
-
-    
 
     @Override
     public int hashCode() {
@@ -114,8 +113,6 @@ public class User implements Serializable{
         hash = 47 * hash + Objects.hashCode(this.lastPasswordChange);
         return hash;
     }
-
-   
 
     @Override
     public boolean equals(Object obj) {
@@ -161,13 +158,6 @@ public class User implements Serializable{
 
     @Override
     public String toString() {
-        /*
-        return "User{" + "id=" + id + ", login=" + login + ", fullName=" + 
-                fullName + ", email=" + email + ", status=" + status + 
-                ", privilege=" + privilege + ", password=" + password + 
-                ", lastAccess=" + lastAccess + ", lastPasswordChange=" 
-                + lastPasswordChange + '}';
-        */
         return fullName;
     }
 }
